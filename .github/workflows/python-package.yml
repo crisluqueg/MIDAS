@@ -24,15 +24,14 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Add conda to system path
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        echo $CONDA/bin >> $GITHUB_PATH
+    - uses: conda-incubator/setup-miniconda@v3
+      with:
+        python-version: ${{ matrix.python-version }}    
     - name: Install dependencies
       run: |
-        conda env update --file requirements_conda.txt --name base
+        conda env update --file environmentMIDAS.yml --name test
         conda install pytest
     - name: Test with pytest
       run: |
-        cd midas/testing
+        cd ${GITHUB_WORKSPACE}/midas/testing
         pytest
