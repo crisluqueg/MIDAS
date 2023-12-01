@@ -23,6 +23,7 @@ jobs:
         environment-file: environmentMIDAS.yml
     - name: Install dependencies
       run: |
+        conda activate test
         python -m pip install pytest
         conda list
     - name: Test with pytest
