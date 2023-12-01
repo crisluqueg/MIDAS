@@ -18,13 +18,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10 
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.10"
     - uses: conda-incubator/setup-miniconda@v3
       with:
-        python-version: "3.10"
         environment-file: environmentMIDAS.yml
     - name: Install dependencies
       run: |
