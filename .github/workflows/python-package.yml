@@ -13,6 +13,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+    run:
+    # setup-miniconda needs this as the default shell config doesn’t pick up its env changes
+    shell: bash -el {0}
+
     strategy:
       fail-fast: false
 
@@ -26,9 +31,7 @@ jobs:
         echo conda $PATH
         conda install pytest
         conda env list
-      shell: bash -el {0}
     - name: Test with pytest
       run: |
         cd ${GITHUB_WORKSPACE}/midas/testing
         pytest
-      shell: bash -el {0}
