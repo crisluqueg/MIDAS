@@ -30,7 +30,7 @@ jobs:
         echo $CONDA/bin >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        conda env update --file requirements_conda.txt --name base
+        conda env update --file environmentMIDAS.yml --name base
         conda install pytest
     - name: Test with pytest
       run: |
