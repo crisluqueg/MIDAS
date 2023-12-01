@@ -25,7 +25,8 @@ jobs:
       run: |
         echo conda $PATH
         conda install pytest
-        conda list
+        conda env list
+        ls /usr/share/miniconda/envs/test/bin ⁠
       shell: bash -el {0}
     - name: Test with pytest
       run: |
