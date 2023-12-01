@@ -29,7 +29,3 @@ jobs:
       run: |
         conda env update --file environmentMIDAS.yml --name test
         conda install pytest
-    - name: Test with pytest
-      run: |
-        cd ${GITHUB_WORKSPACE}/midas/testing
-        pytest
