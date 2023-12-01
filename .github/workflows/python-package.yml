@@ -14,9 +14,9 @@ jobs:
 
     runs-on: ubuntu-latest
     defaults:
-    run:
-    # setup-miniconda needs this as the default shell config doesn’t pick up its env changes
-    shell: bash -el {0}
+      run:
+        # setup-miniconda needs this as the default shell config doesn’t pick up its env changes
+        shell: bash -el {0}
 
     strategy:
       fail-fast: false
