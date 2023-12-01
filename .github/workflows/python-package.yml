@@ -31,5 +31,5 @@ jobs:
         conda install pytest
     - name: Test with pytest
       run: |
-        cd midas/testing
+        cd $GITHUB.WORKSPACE/midas/testing
         pytest
