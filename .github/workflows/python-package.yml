@@ -32,3 +32,4 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/midas/testing
         pytest
+      shell: bash -el {0}
