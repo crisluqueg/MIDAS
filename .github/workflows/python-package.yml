@@ -13,19 +13,25 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        # setup-miniconda needs this as the default shell config doesn’t pick up its env changes
+        shell: bash -el {0}
+
     strategy:
       fail-fast: false
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10 
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.10"
     - uses: conda-incubator/setup-miniconda@v3
       with:
-        python-version: "3.10"
+        environment-file: environmentMIDAS.yml
     - name: Install dependencies
       run: |
-        conda env update --file environmentMIDAS.yml --name test
+        echo conda $PATH
         conda install pytest
+        conda env list
+    - name: Test with pytest
+      run: |
+        cd ${GITHUB_WORKSPACE}/midas/testing
+        pytest
